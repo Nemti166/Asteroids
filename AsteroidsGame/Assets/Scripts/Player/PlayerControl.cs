@@ -7,12 +7,15 @@ namespace Game.Player
     {
         [SerializeField] private Controlling _control;
         [SerializeField] private MovementPlayer _movement;
+        [SerializeField] private RotationPlayer _rotate;
         [SerializeField] private BulletPlayer _bullet;
 
 
         private void FixedUpdate()
         {
             _movement.GetMove(_control.Direction());
+            
+            _rotate.GetRotate();
         }
     }
 }

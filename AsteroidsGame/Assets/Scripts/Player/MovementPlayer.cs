@@ -6,7 +6,6 @@ namespace Game.Player {
     {
         protected override void Move(float speed, Vector2 direction)
         {
-            
             transform.Translate(speed * direction * Time.deltaTime);
         }
     }

@@ -7,28 +7,26 @@ namespace Game.Helper
         [SerializeField] private float _maxSpeed;
         [SerializeField] private float _accel;
 
-        private float cur;
-        private float oldSpeed;
-        private Vector2 oldDirection;
+        private float _currentSpeed;
+        private float _saveSpeed;
+        private Vector2 _saveDirection;
 
         public void GetMove(Vector2 direction)
         {
-            if(direction != Vector2.zero)
+            if (direction != Vector2.zero)
             {
-                oldDirection = direction;
-                
-                cur = cur >= _maxSpeed ? _maxSpeed : cur + _accel * Time.deltaTime;
+                _saveDirection = direction;
 
-                oldSpeed = cur;
+                _currentSpeed = _currentSpeed >= _maxSpeed ? _maxSpeed : _currentSpeed + _accel * Time.deltaTime;
+
+                _saveSpeed = _currentSpeed;
             }
             else
             {
-                cur = 0;
+                _currentSpeed = _currentSpeed <= 0 ? 0 : _currentSpeed - _accel * Time.deltaTime;
             }
 
-            Debug.Log(cur);
-
-            Move(oldSpeed, oldDirection);
+            Move(_saveSpeed, _saveDirection);
         }
 
         protected abstract void Move(float speed, Vector2 direction);
