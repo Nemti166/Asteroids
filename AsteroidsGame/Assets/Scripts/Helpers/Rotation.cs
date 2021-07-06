@@ -8,9 +8,15 @@ namespace Game.Helper
     {
         [SerializeField] private float _speedAngle;
 
+        private float _angle;
+
         public void GetRotate()
         {
 
+
+            Rotate(_angle);
         }
+
+        protected abstract void Rotate(float angle);
     }
 }
