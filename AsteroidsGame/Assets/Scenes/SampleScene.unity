@@ -216,9 +216,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2100518561}
   - component: {fileID: 2100518560}
+  - component: {fileID: 2100518564}
+  - component: {fileID: 2100518563}
   - component: {fileID: 2100518559}
   - component: {fileID: 2100518558}
   - component: {fileID: 2100518557}
+  - component: {fileID: 2100518562}
   - component: {fileID: 2100518556}
   m_Layer: 0
   m_Name: Player
@@ -251,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bab53b336e67eb479aebed4a3144545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 2100518564}
   _maxSpeed: 5
   _accel: 0.1
 --- !u!114 &2100518558
@@ -279,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _control: {fileID: 2100518558}
   _movement: {fileID: 2100518557}
+  _rotate: {fileID: 2100518562}
   _bullet: {fileID: 2100518556}
 --- !u!212 &2100518560
 SpriteRenderer:
@@ -340,9 +345,70 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100518555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0, z: 4}
+  m_LocalPosition: {x: 1.65, y: 0, z: 4}
   m_LocalScale: {x: 2, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100518562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100518555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5545a75cacc0a409e13975664faa1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 2100518564}
+  _speedAngle: 1
+--- !u!61 &2100518563
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100518555}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.31, y: 0.23}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: 0.18}
+  m_EdgeRadius: 0
+--- !u!50 &2100518564
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100518555}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
