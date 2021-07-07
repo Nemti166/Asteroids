@@ -15,7 +15,7 @@ namespace Game.Player
         {
             _movement.GetMove(_control.Direction());
             
-            _rotate.GetRotate(_control.Direction());
+            _rotate.GetRotate(_control.Rotation());
         }
     }
 }
