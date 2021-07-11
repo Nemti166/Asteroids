@@ -6,22 +6,18 @@ namespace Game.Player
 {
     public class Controlling : MonoBehaviour
     {
-        private Vector2 _dir = Vector2.zero;
-        
-       private Vector2 _rot = Vector2.zero;
-
-       public Vector2 Direction()
+       public bool Velocity()
         {
-            _dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            float _dir = Input.GetAxisRaw("Vertical");
 
-            return _dir;
+            return _dir > 0;
         }
 
-        public Vector2 Rotation()
+        public float Rotation()
         {
-            _rot = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            float rotate = Input.GetAxis("Horizontal");
 
-            return _rot;
+            return rotate;
         }
     }
 }

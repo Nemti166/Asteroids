@@ -1,17 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.Helper;
 using UnityEngine;
 
-public class BulletPlayer : MonoBehaviour
+namespace Game.Player
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    public class BulletPlayer : Bullet
     {
         
     }

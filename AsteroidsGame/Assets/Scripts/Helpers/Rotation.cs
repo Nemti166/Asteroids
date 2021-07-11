@@ -6,18 +6,13 @@ namespace Game.Helper
 {
     public abstract class Rotation : MonoBehaviour
     {
-        [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float _speedAngle;
 
-        private float _spin;
-
-        public void GetRotate(Vector2 direction)
+        public void GetRotate(float spin, Rigidbody2D rigidbody)
         {
-            _spin = Mathf.Atan2(direction.y, direction.x) * _speedAngle * Mathf.Rad2Deg;
-
-            Rotate(_spin, _rigidbody);
+            Rotate(spin, _speedAngle, rigidbody);  
         }
 
-        protected abstract void Rotate(float spin, Rigidbody2D rigidbody);
+        protected abstract void Rotate(float spin, float speed, Rigidbody2D rigidbody);
     }
 }
