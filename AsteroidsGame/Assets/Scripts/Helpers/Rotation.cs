@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Helper
@@ -10,7 +8,7 @@ namespace Game.Helper
 
         public void GetRotate(float spin, Rigidbody2D rigidbody)
         {
-            Rotate(spin, _speedAngle, rigidbody);  
+            Rotate(spin, _speedAngle, rigidbody); 
         }
 
         protected abstract void Rotate(float spin, float speed, Rigidbody2D rigidbody);

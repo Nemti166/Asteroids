@@ -21,6 +21,11 @@ namespace Game.Helper
             Move(_saveVector, _saveSpeed, rigidbody);
         }
 
+        public void GetMove(Vector2 direction, Rigidbody2D rigidbody)
+        {
+            Move(direction, _maxSpeed, rigidbody);
+        }
+
         protected abstract void Move(Vector2 direction, float speed, Rigidbody2D rigidbody);
     }
 }

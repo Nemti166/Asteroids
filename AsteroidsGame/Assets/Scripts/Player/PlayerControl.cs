@@ -10,14 +10,21 @@ namespace Game.Player
         [SerializeField] private Controlling _control;
         [SerializeField] private MovementPlayer _movement;
         [SerializeField] private RotationPlayer _rotate;
-        [SerializeField] private BulletPlayer _bullet;
+        [SerializeField] private PlayerWeapon _weapon;
 
+        private void Update()
+        {
+            _weapon.CreateShot();
+        }
 
+        
         private void FixedUpdate()
         {
             _movement.GetMove(_control.Velocity(), _rigidbody);
             
             _rotate.GetRotate(_control.Rotation(), _rigidbody);
+
+            
         }
     }
 }
