@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using Game.Helper;
 
 namespace Game.Player
 {
     public class PlayerWeapon : MonoBehaviour
     {
-        [SerializeField] private GameObject _weapon;
         [SerializeField] private int _reload;
 
         private bool _readyFire = true;
@@ -21,7 +21,7 @@ namespace Game.Player
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Instantiate(_weapon, transform.position, transform.rotation);
+                
                 StartCoroutine(Reload(_reload));
             }
         }

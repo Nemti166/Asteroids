@@ -1,19 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Helper;
 
 namespace Game.Enemy
 {
     public class AsteroidsControl : MonoBehaviour
     {
         [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
-        [SerializeField] private GameObject _asteroid;
-        [SerializeField] private GameObject _mediumAsteroid;
-        [SerializeField] private GameObject _smallAteroid;
 
-        private List<GameObject> _activeBigAsteroids = new List<GameObject>();
-        private List<GameObject> _activeMediumAsteroids = new List<GameObject>();
-
-        private int _asteroidCount = 1;
+        private int _asteroidCount = 2;
 
         private void Start()
         {
@@ -26,10 +21,8 @@ namespace Game.Enemy
             {
                 int index = Random.Range(0, _spawnPoints.Count);
 
-                GameObject clone =
-                Instantiate(_asteroid, _spawnPoints[index].transform.position, Quaternion.identity);
-
-                _activeBigAsteroids.Add(clone);
+                var asteroid = ObjectPool.Instance.GetObject("BigAsteroid");
+                if(asteroid != null) asteroid.GetComponent<Asteroid>().Parameters(Vector2.one, _spawnPoints[index].position);
             }
         }
     }

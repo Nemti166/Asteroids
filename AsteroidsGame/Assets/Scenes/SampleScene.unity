@@ -153,6 +153,65 @@ Transform:
   m_Father: {fileID: 1207866331}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &191127653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191127655}
+  - component: {fileID: 191127654}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &191127654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191127653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdac5c559c5fcc4e943331d8783d764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _infoList:
+  - _name: BigAsteroid
+    _model: {fileID: 8135638710944425410, guid: 5bc353b0ccfc8274eaa9bbdc35c71f1b, type: 3}
+    _minimum: 2
+  - _name: MedAsteroid
+    _model: {fileID: 3552561741569472453, guid: e53d7a5d76d23914b955c6b96ab74fd5, type: 3}
+    _minimum: 4
+  - _name: MedAsteroid_2
+    _model: {fileID: 4983888172751601328, guid: e84a72da580e112479747832aacddef1, type: 3}
+    _minimum: 4
+  - _name: SmlAsteroid
+    _model: {fileID: 2471713361993169278, guid: 5c128b1055b77d2409a21686ce813749, type: 3}
+    _minimum: 6
+  - _name: SmlAsteroid_2
+    _model: {fileID: 1818377108142217438, guid: 0b611e61e0249af4db275f7a79275081, type: 3}
+    _minimum: 6
+--- !u!4 &191127655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191127653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &309069471
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,9 +505,6 @@ MonoBehaviour:
   - {fileID: 744106478}
   - {fileID: 1539658728}
   - {fileID: 309069472}
-  _asteroid: {fileID: 8135638710944425410, guid: 5bc353b0ccfc8274eaa9bbdc35c71f1b, type: 3}
-  _mediumAsteroid: {fileID: 0}
-  _smallAteroid: {fileID: 0}
 --- !u!1 &1539658727
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ab8e9bfe7b35f49a2b338b0d20301c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 6247006261946153928, guid: e343a1eb95946b149b7705ab70e2762e, type: 3}
   _reload: 3
 --- !u!114 &2100518557
 MonoBehaviour:
@@ -560,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bab53b336e67eb479aebed4a3144545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 100
+  _maxSpeed: 50
   _accel: 2
 --- !u!114 &2100518558
 MonoBehaviour:
