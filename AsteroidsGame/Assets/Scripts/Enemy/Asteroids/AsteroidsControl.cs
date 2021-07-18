@@ -17,12 +17,17 @@ namespace Game.Enemy
 
         private void CreateBigAsteroid()
         {
+            float X = Random.Range(-1f, 1f);
+            float Y = Random.Range(-1f, 1f);
+
+            Vector2 direction = new Vector2(X, Y);
+
             for (int i = 0; i < _asteroidCount; i++)
             {
                 int index = Random.Range(0, _spawnPoints.Count);
 
                 var asteroid = ObjectPool.Instance.GetObject("BigAsteroid");
-                if(asteroid != null) asteroid.GetComponent<Asteroid>().Parameters(Vector2.one, _spawnPoints[index].position);
+                asteroid.GetComponent<Asteroid>().Parameters(direction, 0, _spawnPoints[index].position);
             }
         }
     }

@@ -21,7 +21,10 @@ namespace Game.Player
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                
+                GameObject bullet = ObjectPool.Instance.GetObject("Bullet");
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = transform.rotation;
+
                 StartCoroutine(Reload(_reload));
             }
         }

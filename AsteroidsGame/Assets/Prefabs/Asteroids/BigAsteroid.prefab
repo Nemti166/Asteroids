@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1496010543442506642}
   - component: {fileID: 4424120993708060468}
   - component: {fileID: -2050820024583670552}
+  - component: {fileID: -7017449105199879935}
   - component: {fileID: 8135638710944425418}
   m_Layer: 0
   m_Name: BigAsteroid
@@ -151,6 +152,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 8135638710944425415}
   _movement: {fileID: 4424120993708060468}
   _rotate: {fileID: -2050820024583670552}
+  _damage: {fileID: -7017449105199879935}
 --- !u!114 &4424120993708060468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a34fc184db149448e2bae7a5deb34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 50
-  _accel: 0
+  _accelSpeed: {x: 30, y: 40}
 --- !u!114 &-2050820024583670552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedAngle: 20
+--- !u!114 &-7017449105199879935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135638710944425410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc08542fae9fcc49971e92743ef51f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidsCount: 2
+  _smallerAsteroids:
+  - MedAsteroid
+  - MedAsteroid_2
 --- !u!114 &8135638710944425418
 MonoBehaviour:
   m_ObjectHideFlags: 0

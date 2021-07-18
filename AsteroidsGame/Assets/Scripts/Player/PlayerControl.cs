@@ -1,3 +1,4 @@
+using System.Collections;
 using Game.Helper;
 using UnityEngine;
 
@@ -17,14 +18,11 @@ namespace Game.Player
             _weapon.CreateShot();
         }
 
-        
         private void FixedUpdate()
         {
             _movement.GetMove(_control.Velocity(), _rigidbody);
             
             _rotate.GetRotate(_control.Rotation(), _rigidbody);
-
-            
         }
     }
 }

@@ -4,26 +4,27 @@ namespace Game.Helper
 {
     public abstract class Movement : MonoBehaviour
     {
-        [SerializeField] private float _maxSpeed;
-        [SerializeField] private float _accel;
+        [SerializeField] private Vector2 _accelSpeed;
 
         private float _saveSpeed;
         private Vector2 _saveVector;
+
+        public Vector2 AccelSpeed => _accelSpeed;
 
         public void GetMove(bool velocity, Rigidbody2D rigidbody)
         {
             if (velocity)
             {
-                _saveSpeed = _saveSpeed < _maxSpeed ? _saveSpeed + _accel : _maxSpeed;
+                _saveSpeed = _saveSpeed < _accelSpeed.y ? _saveSpeed + _accelSpeed.x : _accelSpeed.y;
                 _saveVector = transform.right;
             }
 
             Move(_saveVector, _saveSpeed, rigidbody);
         }
 
-        public void GetMove(Vector2 direction, Rigidbody2D rigidbody)
+        public void GetMove(Vector2 direction, float speed, Rigidbody2D rigidbody)
         {
-            Move(direction, _maxSpeed, rigidbody);
+            Move(direction, speed, rigidbody);
         }
 
         protected abstract void Move(Vector2 direction, float speed, Rigidbody2D rigidbody);

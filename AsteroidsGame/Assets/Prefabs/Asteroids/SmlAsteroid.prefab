@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1883376365351047304}
   - component: {fileID: 995115035842125270}
   - component: {fileID: 5540115036073374081}
+  - component: {fileID: -8671605664100297313}
+  - component: {fileID: -4271755394816558480}
   m_Layer: 0
   m_Name: SmlAsteroid
   m_TagString: Asteroid
@@ -150,6 +152,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 1483853010200253651}
   _movement: {fileID: 995115035842125270}
   _rotate: {fileID: 5540115036073374081}
+  _damage: {fileID: -8671605664100297313}
 --- !u!114 &995115035842125270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a34fc184db149448e2bae7a5deb34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 90
-  _accel: 0
+  _accelSpeed: {x: 10, y: 100}
 --- !u!114 &5540115036073374081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +179,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedAngle: 50
+--- !u!114 &-8671605664100297313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471713361993169278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc08542fae9fcc49971e92743ef51f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidsCount: 0
+  _smallerAsteroids: []
+--- !u!114 &-4271755394816558480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2471713361993169278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e4f2199c0fe1a46b8cf4ab1d287b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _representation: {fileID: 8079179142532660843}
