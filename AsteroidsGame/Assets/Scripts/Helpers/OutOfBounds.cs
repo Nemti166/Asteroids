@@ -8,12 +8,36 @@ namespace Game.Helper
 
         private static int _axisOutOfGame;
 
+        private static float _botBound;
+        private static float _topBound;
+
         public static int AxisOutOfGame => _axisOutOfGame;
 
-        public static bool IsInGameArea(Transform transform, Bounds bounds)
+
+        public static float BottomBound()
+        {
+            var camHalfHeight = _camera.orthographicSize;
+            var camPos = _camera.transform.position;
+            
+            _botBound = camPos.y - camHalfHeight;
+
+            return _botBound;
+        }
+
+        public static float TopBound()
+        {
+            var camHalfHeight = _camera.orthographicSize;
+            var camPos = _camera.transform.position;
+            
+            _topBound = camPos.y + camHalfHeight;
+
+            return _topBound;
+        }
+
+        public static bool IsOutGameArea(Transform transform, Bounds bounds)
         {
             var camHalfHeight = _camera.orthographicSize * 1.2f;
-            var camHalfWidth = camHalfHeight * _camera.aspect;
+            var camHalfWidth = camHalfHeight * _camera.aspect * 1.2;
             var camPos = _camera.transform.position;
             var topBound = camPos.y + camHalfHeight;
             var bottomBound = camPos.y - camHalfHeight;

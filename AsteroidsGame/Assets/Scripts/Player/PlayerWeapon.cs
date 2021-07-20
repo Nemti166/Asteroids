@@ -22,6 +22,7 @@ namespace Game.Player
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GameObject bullet = ObjectPool.Instance.GetObject("Bullet");
+                bullet.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
 

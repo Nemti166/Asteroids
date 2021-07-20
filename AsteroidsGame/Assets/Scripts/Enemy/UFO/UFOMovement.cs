@@ -7,7 +7,7 @@ namespace Game.Enemy.UFO
     {
         protected override void Move(Vector2 direction, float speed, Rigidbody2D rigidbody)
         {
-            Debug.Log("A");
+            rigidbody.velocity = direction * speed * Time.fixedDeltaTime;
         }
     }
 }
