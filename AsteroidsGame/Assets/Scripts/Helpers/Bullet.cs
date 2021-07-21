@@ -9,7 +9,7 @@ namespace Game.Helper
 
         private void FixedUpdate()
         {
-            MoveBullet(transform.right, _speed, _rigidbody);    
+            MoveBullet(transform.right, _speed, _rigidbody);
         }
 
         protected abstract void MoveBullet(Vector2 direction, float speed, Rigidbody2D rigidbody);

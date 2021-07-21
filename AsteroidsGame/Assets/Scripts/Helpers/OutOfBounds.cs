@@ -34,10 +34,10 @@ namespace Game.Helper
             return _topBound;
         }
 
-        public static bool IsOutGameArea(Transform transform, Bounds bounds)
+        public static bool IsOutGameArea(Transform transform, float expansion, Bounds bounds)
         {
-            var camHalfHeight = _camera.orthographicSize * 1.2f;
-            var camHalfWidth = camHalfHeight * _camera.aspect * 1.2;
+            var camHalfHeight = _camera.orthographicSize * expansion;
+            var camHalfWidth = camHalfHeight * _camera.aspect * expansion;
             var camPos = _camera.transform.position;
             var topBound = camPos.y + camHalfHeight;
             var bottomBound = camPos.y - camHalfHeight;

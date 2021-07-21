@@ -6,13 +6,20 @@ namespace Game.Enemy.UFO {
     public class UFOWeapon : MonoBehaviour
     {
         [SerializeField] private int _reload;
+        [SerializeField] private Transform _target;
 
-        private bool _activeCooldown = false;
+        private bool _activeReload = false;
 
         public void StartFire()
         {
-            if (!_activeCooldown)
+           
+            if (!_activeReload)
                 StartCoroutine(Reload(_reload));
+        }
+
+        public void StopFire()
+        {
+            StopAllCoroutines();
         }
 
         private void Fire()
@@ -20,19 +27,28 @@ namespace Game.Enemy.UFO {
             GameObject bullet = ObjectPool.Instance.GetObject("Bullet");
             bullet.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
             bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
+            bullet.transform.rotation = RotationBullet();
+            bullet.tag = "Enemy";
 
-            _activeCooldown = false;
-            StartCoroutine(Reload(_reload));
+            _activeReload = false;
         }
 
-        private IEnumerator Reload(float cooldown)
+        private Quaternion RotationBullet()
         {
-            _activeCooldown = true;
+            Vector2 direct = _target.position - transform.position;
+            float angle = Mathf.Atan2(direct.y, direct.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
+            return rotation;
+        }
+
+        private IEnumerator Reload(float reload)
+        {
+            _activeReload = true;
+            Debug.Log(_activeReload);
             while (true)
             {
-                yield return new WaitForSeconds(cooldown);
+                yield return new WaitForSeconds(reload);
 
                 Fire();
             }

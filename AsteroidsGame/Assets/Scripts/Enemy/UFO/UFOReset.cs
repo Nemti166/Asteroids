@@ -40,7 +40,7 @@ namespace Game.Enemy.UFO
         {
             while (true)
             {
-                yield return new WaitForSeconds(16);
+                yield return new WaitForSeconds(5);
 
                 _move = true;
 

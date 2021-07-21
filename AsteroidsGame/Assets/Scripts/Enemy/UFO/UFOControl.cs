@@ -15,8 +15,8 @@ namespace Game.Enemy.UFO
 
         private void Update()
         {
-            if (!_checkBorder.OutBorder && _reset.CanMove)
-                _weapon.StartFire();
+            Shoot();
+           
         }
 
         private void FixedUpdate()
@@ -32,6 +32,19 @@ namespace Game.Enemy.UFO
                 return _reset.Direct;
             else
                 return Vector2.zero;
+        }
+
+        private void Shoot()
+        {
+            if (!_checkBorder.OutBorder && _reset.CanMove)
+            {
+                _weapon.StartFire();
+
+            }
+            else if (_checkBorder.OutBorder || !_reset.CanMove)
+            {
+                _weapon.StopFire();
+            }
         }
     }
 }

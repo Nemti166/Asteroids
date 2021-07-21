@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using Game.Helper;
 
 namespace Game.Player
 {
@@ -56,11 +56,15 @@ namespace Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.CompareTag(tag) && !_invincible)
+            if (!collision.CompareTag(tag))
             {
-                StartCoroutine(Timer());
+                ObjectPool.Instance.DestroyObject(collision.gameObject.name, collision.gameObject);
+
+                if (!_invincible)
+                {
+                    StartCoroutine(Timer());
+                }
             }
         }
-
     }
 }

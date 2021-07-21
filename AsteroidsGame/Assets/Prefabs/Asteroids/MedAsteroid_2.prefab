@@ -208,3 +208,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _representation: {fileID: 6813250825146201689}
+  _expansionOfBoundaries: 1

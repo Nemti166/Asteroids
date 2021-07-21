@@ -10,9 +10,9 @@ namespace Game.Enemy
 
         private int _asteroidCount = 2;
 
-        private void Start()
+        private void Update()
         {
-            CreateBigAsteroid();
+            AsteroidCheck();
         }
 
         private void CreateBigAsteroid()
@@ -29,6 +29,15 @@ namespace Game.Enemy
                 var asteroid = ObjectPool.Instance.GetObject("BigAsteroid");
                 asteroid.GetComponent<Asteroid>().Parameters(direction, 0, _spawnPoints[index].position);
             }
+
+            _asteroidCount += 1;
+        }
+
+        private void AsteroidCheck()
+        {
+            var chek = GameObject.FindGameObjectWithTag("Asteroid");
+
+            if (chek == null) CreateBigAsteroid();
         }
     }
 }

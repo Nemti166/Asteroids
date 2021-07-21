@@ -5,6 +5,7 @@ namespace Game.Helper
     public class CheckBorder : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _representation;
+        [SerializeField] private float _expansionOfBoundaries;
 
         private bool _outBorder = false;
 
@@ -14,6 +15,11 @@ namespace Game.Helper
         {
             X = 1,
             Y = 2
+        }
+
+        private void Start()
+        {
+            if (_expansionOfBoundaries == 0) _expansionOfBoundaries = 1;
         }
 
         void FixedUpdate()
@@ -28,7 +34,7 @@ namespace Game.Helper
 
             _outBorder = false;
 
-            if(OutOfBounds.IsOutGameArea(transform, _representation.bounds))
+            if(OutOfBounds.IsOutGameArea(transform, _expansionOfBoundaries, _representation.bounds))
             {
                 if (OutOfBounds.AxisOutOfGame == (int)Axis.X)
                     posX = -posX * 0.9f;

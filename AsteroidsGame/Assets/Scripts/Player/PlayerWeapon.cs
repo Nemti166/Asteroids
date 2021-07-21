@@ -25,6 +25,7 @@ namespace Game.Player
                 bullet.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
+                bullet.tag = "Player";
 
                 StartCoroutine(Reload(_reload));
             }

@@ -24,7 +24,10 @@ namespace Game.Helper
 
         [SerializeField] private List<Info> _infoList;
         
+        //массив названий пустых GameObject'ов куда будут спрятаны астероиды и пули
         private string[] _nameQueue = new string[] { "AllAsteroids", "AllBullets" } ;
+        
+        //Лучше через интерфейс и определение типа, но сделал через название GameObject+(Clone)
         private string _crutch = "(Clone)";
 
         private Dictionary<string, Queue<GameObject>> _pools;
