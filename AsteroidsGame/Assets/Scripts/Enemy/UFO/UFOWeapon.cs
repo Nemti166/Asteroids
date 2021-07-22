@@ -8,29 +8,29 @@ namespace Game.Enemy.UFO {
         [SerializeField] private int _reload;
         [SerializeField] private Transform _target;
 
-        private bool _activeReload = false;
+        private bool _cantFire = false;
 
-        public void StartFire()
+        private void Start()
         {
-           
-            if (!_activeReload)
-                StartCoroutine(Reload(_reload));
+            StartCoroutine(Reload(_reload));
         }
 
-        public void StopFire()
+        public void CanFire(bool fire)
         {
-            StopAllCoroutines();
+            _cantFire = fire;
         }
 
         private void Fire()
         {
-            GameObject bullet = ObjectPool.Instance.GetObject("Bullet");
-            bullet.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = RotationBullet();
-            bullet.tag = "Enemy";
+            if (_cantFire)
+            {
+                GameObject bullet = ObjectPool.Instance.GetObject("Bullet");
+                bullet.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = RotationBullet();
+                bullet.tag = "Enemy";
 
-            _activeReload = false;
+            }
         }
 
         private Quaternion RotationBullet()
@@ -44,8 +44,6 @@ namespace Game.Enemy.UFO {
 
         private IEnumerator Reload(float reload)
         {
-            _activeReload = true;
-            Debug.Log(_activeReload);
             while (true)
             {
                 yield return new WaitForSeconds(reload);

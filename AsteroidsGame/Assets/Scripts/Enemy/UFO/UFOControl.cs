@@ -13,38 +13,37 @@ namespace Game.Enemy.UFO
         [SerializeField] private UFOReset _reset;
         [SerializeField] private CheckBorder _checkBorder;
 
+        private bool _outBorder => _checkBorder.OutBorder;
+
         private void Update()
         {
-            Shoot();
-           
+            _weapon.CanFire(_reset.CanMove);
         }
 
         private void FixedUpdate()
         {
             _movement.GetMove(Vector(), _movement.AccelSpeed.y, _rigidbody);
 
-            _reset.CheckBorders(_checkBorder.OutBorder);
+            ResetUFO();
+        }
+
+        private void ResetUFO()
+        {
+            if (_damage.Damage || _outBorder)
+            {
+                _reset.Reset();
+
+                _damage.RefreshDamage();
+            }
         }
 
         private Vector2 Vector()
         {
-            if (_reset.CanMove && !_checkBorder.OutBorder)
+            if (_reset.CanMove)
                 return _reset.Direct;
             else
                 return Vector2.zero;
         }
 
-        private void Shoot()
-        {
-            if (!_checkBorder.OutBorder && _reset.CanMove)
-            {
-                _weapon.StartFire();
-
-            }
-            else if (_checkBorder.OutBorder || !_reset.CanMove)
-            {
-                _weapon.StopFire();
-            }
-        }
     }
 }

@@ -9,6 +9,7 @@ namespace Game.Enemy.UFO
     {
         private Vector3 _startPosition;
         private Vector2 _direct;
+
         private bool _move = false;
 
         public Vector2 Direct => _direct;
@@ -25,6 +26,9 @@ namespace Game.Enemy.UFO
 
         private void NewStartPosition()
         {
+            Debug.Log("A");
+            _move = false;
+
             float bot = OutOfBounds.BottomBound() - OutOfBounds.BottomBound() * 0.2f;
             float top = OutOfBounds.TopBound() - OutOfBounds.TopBound() * 0.2f;
             float topBot = Random.Range(bot, top);
@@ -34,6 +38,8 @@ namespace Game.Enemy.UFO
             DirectionVector(leftRight);
 
             transform.position = newPosition;
+            
+            StartCoroutine(MoveTimer());
         }
 
         private IEnumerator MoveTimer()
@@ -53,16 +59,9 @@ namespace Game.Enemy.UFO
             _direct = Vector2.right * direct;
         }
 
-        public void CheckBorders(bool outBorder)
+        public void Reset()
         {
-            if(outBorder)
-            {
-                _move = false;
-
-                NewStartPosition();
-
-                StartCoroutine(MoveTimer());
-            }
+            NewStartPosition();
         }
     }
 }
