@@ -26,7 +26,6 @@ namespace Game.Enemy.UFO
 
         private void NewStartPosition()
         {
-            Debug.Log("A");
             _move = false;
 
             float bot = OutOfBounds.BottomBound() - OutOfBounds.BottomBound() * 0.2f;

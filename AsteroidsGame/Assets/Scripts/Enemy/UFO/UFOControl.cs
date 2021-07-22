@@ -44,6 +44,5 @@ namespace Game.Enemy.UFO
             else
                 return Vector2.zero;
         }
-
     }
 }
