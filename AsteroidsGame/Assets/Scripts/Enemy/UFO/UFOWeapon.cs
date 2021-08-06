@@ -29,7 +29,6 @@ namespace Game.Enemy.UFO {
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = RotationBullet();
                 bullet.tag = "Enemy";
-
             }
         }
 

@@ -58,8 +58,6 @@ namespace Game.Player
         {
             if (!collision.CompareTag(tag))
             {
-                ObjectPool.Instance.DestroyObject(collision.gameObject.name, collision.gameObject);
-
                 if (!_invincible)
                 {
                     StartCoroutine(Timer());

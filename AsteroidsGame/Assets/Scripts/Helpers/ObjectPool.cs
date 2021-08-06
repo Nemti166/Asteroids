@@ -9,25 +9,21 @@ namespace Game.Helper
         [Serializable]
         public struct Info
         {
-            public string _name;
-            public GameObject _model;
-            public int _minimum;
-            
             public enum Queue
             {
                 Asteroid = 0,
                 Bullet = 1
             };
 
+            public string _name;
+            public GameObject _model;
+            public int _minimum;
             public Queue _queue;
         }
 
         [SerializeField] private List<Info> _infoList;
         
-        //массив названий пустых GameObject'ов куда будут спрятаны астероиды и пули
-        private string[] _nameQueue = new string[] { "AllAsteroids", "AllBullets" } ;
-        
-        //Лучше через интерфейс и определение типа, но сделал через название GameObject+(Clone)
+        //Р”РѕР±Р°РІР»РµРЅРёРµ С‡С‚РѕР±С‹ РЅР°С…РѕРґРёС‚СЊ РїРѕ РёРјРµРЅРё GameObject+(Clone)
         private string _crutch = "(Clone)";
 
         private Dictionary<string, Queue<GameObject>> _pools;
@@ -46,38 +42,25 @@ namespace Game.Helper
         private void Init()
         {
             _pools = new Dictionary<string, Queue<GameObject>>();
+            
+            foreach (Info obj in _infoList)
+            {
+                string crutch = obj._name + _crutch;
 
-            GameObject empty = new GameObject();
+                _pools[crutch] = new Queue<GameObject>();
 
-            for (int b = 0; b < _nameQueue.Length; b++) {
-
-                var box = Instantiate(empty, transform, false);
-                box.name = _nameQueue[b];
-
-                foreach (Info obj in _infoList)
+                for (int i = 0; i < obj._minimum; i++)
                 {
-                    if ((int)obj._queue == b)
-                    {
-                        string crutch = obj._name + _crutch;
+                    var go = NewObject(obj._name);
 
-                        _pools[crutch] = new Queue<GameObject>();
-
-                        for (int i = 0; i < obj._minimum; i++)
-                        {
-                            var go = NewObject(obj._name, box.transform);
-
-                            _pools[crutch].Enqueue(go);
-                        }
-                    }
+                    _pools[crutch].Enqueue(go);
                 }
             }
-
-            Destroy(empty);
         }
 
-        private GameObject NewObject(string name, Transform parent)
+        private GameObject NewObject(string name)
         {
-            GameObject obj = Instantiate(_infoList.Find(x => x._name == name)._model, parent);
+            GameObject obj = Instantiate(_infoList.Find(x => x._name == name)._model);
             obj.SetActive(false);
 
             return obj;
@@ -87,7 +70,7 @@ namespace Game.Helper
         {
             string crutch = name + _crutch;
 
-            GameObject obj = _pools[crutch].Count > 0 ? _pools[crutch].Dequeue() : NewObject(name, transform);
+            GameObject obj = _pools[crutch].Count > 0 ? _pools[crutch].Dequeue() : NewObject(name);
             obj.SetActive(true);
 
             return obj;

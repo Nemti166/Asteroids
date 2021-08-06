@@ -25,8 +25,8 @@ namespace Game.Enemy
             for (int i = 0; i < _asteroidCount; i++)
             {
                 int index = Random.Range(0, _spawnPoints.Count);
-
                 var asteroid = ObjectPool.Instance.GetObject("BigAsteroid");
+                
                 asteroid.GetComponent<Asteroid>().Parameters(direction, 0, _spawnPoints[index].position);
             }
 
