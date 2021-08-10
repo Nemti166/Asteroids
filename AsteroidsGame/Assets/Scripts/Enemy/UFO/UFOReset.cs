@@ -20,8 +20,6 @@ namespace Game.Enemy.UFO
             _startPosition = transform.position;
 
             NewStartPosition();
-
-            StartCoroutine(MoveTimer());
         }
 
         private void NewStartPosition()
@@ -37,7 +35,7 @@ namespace Game.Enemy.UFO
             DirectionVector(leftRight);
 
             transform.position = newPosition;
-            
+
             StartCoroutine(MoveTimer());
         }
 
@@ -49,7 +47,7 @@ namespace Game.Enemy.UFO
 
                 _move = true;
 
-                StopAllCoroutines();
+                StopCoroutine(MoveTimer());
             }
         }
 
@@ -58,7 +56,7 @@ namespace Game.Enemy.UFO
             _direct = Vector2.right * direct;
         }
 
-        public void Reset()
+        public void ResetUFO()
         {
             NewStartPosition();
         }

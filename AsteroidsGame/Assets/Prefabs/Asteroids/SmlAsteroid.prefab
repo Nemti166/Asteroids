@@ -153,6 +153,7 @@ MonoBehaviour:
   _movement: {fileID: 995115035842125270}
   _rotate: {fileID: 5540115036073374081}
   _damage: {fileID: -8671605664100297313}
+  type: 2
 --- !u!114 &995115035842125270
 MonoBehaviour:
   m_ObjectHideFlags: 0

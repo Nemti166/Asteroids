@@ -15,7 +15,7 @@ namespace Game.Player
 
         private IEnumerator Timer()
         {
-            StartCoroutine(InvincibleTime());
+            var invicible = StartCoroutine(InvincibleTime());
 
             while (true)
             {
@@ -23,7 +23,8 @@ namespace Game.Player
 
                 AlphaNormalize();
 
-                StopAllCoroutines();
+                StopCoroutine(invicible);
+                StopCoroutine(Timer());
             }
         }
 

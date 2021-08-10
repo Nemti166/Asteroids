@@ -11,10 +11,11 @@ namespace Game.Helper
         {
             public enum Queue
             {
-                Asteroid = 0,
-                Bullet = 1
+                BigAsteroid,
+                MediumAsteroid,
+                SmallAsteroid,
+                Bullet
             };
-
             public string _name;
             public GameObject _model;
             public int _minimum;
@@ -23,10 +24,7 @@ namespace Game.Helper
 
         [SerializeField] private List<Info> _infoList;
         
-        //Добавление чтобы находить по имени GameObject+(Clone)
-        private string _crutch = "(Clone)";
-
-        private Dictionary<string, Queue<GameObject>> _pools;
+        private Dictionary<Info.Queue, Queue<GameObject>> _pools;
 
         #region Singlton
         public static ObjectPool Instance;
@@ -41,46 +39,40 @@ namespace Game.Helper
 
         private void Init()
         {
-            _pools = new Dictionary<string, Queue<GameObject>>();
-            
+            _pools = new Dictionary<Info.Queue, Queue<GameObject>>();
+
             foreach (Info obj in _infoList)
             {
-                string crutch = obj._name + _crutch;
-
-                _pools[crutch] = new Queue<GameObject>();
+                _pools[obj._queue] = new Queue<GameObject>();
 
                 for (int i = 0; i < obj._minimum; i++)
                 {
-                    var go = NewObject(obj._name);
+                    var go = NewObject(obj._queue);
 
-                    _pools[crutch].Enqueue(go);
+                    _pools[obj._queue].Enqueue(go);
                 }
             }
         }
 
-        private GameObject NewObject(string name)
+        private GameObject NewObject(Info.Queue queue)
         {
-            GameObject obj = Instantiate(_infoList.Find(x => x._name == name)._model);
+            GameObject obj = Instantiate(_infoList.Find(x => x._queue == queue)._model);
             obj.SetActive(false);
 
             return obj;
         }
 
-        public GameObject GetObject(string name)
+        public GameObject GetObject(Info.Queue queue)
         {
-            string crutch = name + _crutch;
-
-            GameObject obj = _pools[crutch].Count > 0 ? _pools[crutch].Dequeue() : NewObject(name);
+            GameObject obj = _pools[queue].Count > 0 ? _pools[queue].Dequeue() : NewObject(queue);
             obj.SetActive(true);
 
             return obj;
         }
 
-        public void DestroyObject(string name, GameObject obj)
+        public void DestroyObject(GameObject obj)
         {
-            if (!_pools.ContainsKey(name)) return;
-
-            _pools[name].Enqueue(obj);
+            _pools[obj.GetComponent<IObjectType>().Type].Enqueue(obj);
             obj.SetActive(false);
         }
     }

@@ -153,6 +153,7 @@ MonoBehaviour:
   _movement: {fileID: 2442031295699455804}
   _rotate: {fileID: 5960897445220156053}
   _damage: {fileID: 941333282078207862}
+  type: 1
 --- !u!114 &2442031295699455804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _asteroidsCount: 2
   _smallerAsteroids:
-  - SmlAsteroid
-  - SmlAsteroid_2
+  - {fileID: 2471713361993169278, guid: 5c128b1055b77d2409a21686ce813749, type: 3}
 --- !u!114 &-1025732440788402038
 MonoBehaviour:
   m_ObjectHideFlags: 0

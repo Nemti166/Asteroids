@@ -1,17 +1,22 @@
 using UnityEngine;
+using Game.Helper;
 
 namespace Game.Enemy
 {
-    public class Asteroid : MonoBehaviour
+    public class Asteroid : MonoBehaviour, IObjectType
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private AsteroidMovement _movement;
         [SerializeField] private AsteroidRotation _rotate;
         [SerializeField] private AsteroidDamage _damage;
 
+        [SerializeField] private ObjectPool.Info.Queue type;
+
         private Vector2 _direction;
         private float _spin;
         private float _speed;
+
+        public ObjectPool.Info.Queue Type => type;
 
         public void Parameters(Vector2 direct, float speed, Vector3 position)
         {

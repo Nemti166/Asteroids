@@ -153,6 +153,7 @@ MonoBehaviour:
   _movement: {fileID: 4424120993708060468}
   _rotate: {fileID: -2050820024583670552}
   _damage: {fileID: -7017449105199879935}
+  type: 0
 --- !u!114 &4424120993708060468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _asteroidsCount: 2
   _smallerAsteroids:
-  - MedAsteroid
-  - MedAsteroid_2
+  - {fileID: 3552561741569472453, guid: e53d7a5d76d23914b955c6b96ab74fd5, type: 3}
 --- !u!114 &8135638710944425418
 MonoBehaviour:
   m_ObjectHideFlags: 0

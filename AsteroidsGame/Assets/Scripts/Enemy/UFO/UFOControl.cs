@@ -31,7 +31,7 @@ namespace Game.Enemy.UFO
         {
             if (_damage.Damage || _outBorder)
             {
-                _reset.Reset();
+                _reset.ResetUFO();
 
                 _damage.RefreshDamage();
             }

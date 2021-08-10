@@ -24,7 +24,7 @@ namespace Game.Enemy.UFO {
         {
             if (_cantFire)
             {
-                GameObject bullet = ObjectPool.Instance.GetObject("Bullet");
+                GameObject bullet = ObjectPool.Instance.GetObject(ObjectPool.Info.Queue.Bullet);
                 bullet.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = RotationBullet();

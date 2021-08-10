@@ -1,12 +1,15 @@
-using Game.Helper;
 using UnityEngine;
 
 namespace Game.Helper
 {
-    public abstract class Bullet : MonoBehaviour
+    public abstract class Bullet : MonoBehaviour, IObjectType
     {
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private float _speed;
+
+        public ObjectPool.Info.Queue Type => type;
+
+        [SerializeField] private ObjectPool.Info.Queue type;
 
         private void FixedUpdate()
         {
@@ -17,7 +20,7 @@ namespace Game.Helper
         {
             if(!other.CompareTag(tag))
             {
-                ObjectPool.Instance.DestroyObject(gameObject.name, gameObject);
+                ObjectPool.Instance.DestroyObject(gameObject);
             }
         }
 

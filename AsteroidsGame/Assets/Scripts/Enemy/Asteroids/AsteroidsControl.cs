@@ -7,6 +7,7 @@ namespace Game.Enemy
     public class AsteroidsControl : MonoBehaviour
     {
         [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
+        [SerializeField] private ObjectPool.Info.Queue _type;
 
         private int _asteroidCount = 2;
 
@@ -25,7 +26,7 @@ namespace Game.Enemy
             for (int i = 0; i < _asteroidCount; i++)
             {
                 int index = Random.Range(0, _spawnPoints.Count);
-                var asteroid = ObjectPool.Instance.GetObject("BigAsteroid");
+                GameObject asteroid = ObjectPool.Instance.GetObject(_type);
                 
                 asteroid.GetComponent<Asteroid>().Parameters(direction, 0, _spawnPoints[index].position);
             }

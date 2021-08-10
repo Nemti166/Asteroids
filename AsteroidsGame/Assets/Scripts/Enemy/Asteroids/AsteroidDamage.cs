@@ -6,7 +6,7 @@ namespace Game.Enemy
     public class AsteroidDamage : MonoBehaviour
     {
         [SerializeField] private int _asteroidsCount;
-        [SerializeField] private string[] _smallerAsteroids = new string[] { };
+        [SerializeField] private GameObject[] _smallerAsteroids = new GameObject[] { };
 
         private Vector2 _direction;
 
@@ -18,13 +18,15 @@ namespace Game.Enemy
         private void CreateSmallerAsteroids()
         {
             float speed = Random.Range(50, 100);
-            string newAsteroidView = _smallerAsteroids[Random.Range(0, _smallerAsteroids.Length)];
+            GameObject newAsteroidView = _smallerAsteroids[Random.Range(0, _smallerAsteroids.Length)];
             
             for (int i = 0; i < _asteroidsCount; i++)
             {
                 Vector2 direction = new Vector2(_direction.x, _direction.y);
 
-                GameObject asteroid = ObjectPool.Instance.GetObject(newAsteroidView);
+                GameObject asteroid = ObjectPool.Instance.
+                    GetObject(newAsteroidView.GetComponent<IObjectType>().Type);
+
                 asteroid.GetComponent<Asteroid>().Parameters(direction, speed, transform.position);
             }
         }
@@ -38,7 +40,7 @@ namespace Game.Enemy
                     CreateSmallerAsteroids();
                 }
 
-                ObjectPool.Instance.DestroyObject(gameObject.name, gameObject);
+                ObjectPool.Instance.DestroyObject(gameObject);
             }
         }
     }
