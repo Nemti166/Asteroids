@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : MonoBehaviour
+namespace Game.Helper
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BulletMove : Bullet
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void MoveBullet(Vector2 direction, float speed, Rigidbody2D rigidbody)
+        {
+            rigidbody.velocity = direction * speed;
+        }
     }
 }
